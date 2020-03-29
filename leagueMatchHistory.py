@@ -1,20 +1,20 @@
 import requests
 
-#api key RGAPI-4ad87109-3779-4236-9f64-d5a52dd4cd6a
+#api key RGAPI-c87cc474-d6d0-493e-b33b-3ec7869b2201
 
 def requestSummonerData(region, summonerName, APIKey):
-    URL = "https://" + region + ".api.riotgames.com/lol/summoner/v4/summoners/by-name/" + summonerName + "?api_key=" + APIKey
+    URL = "https://" + region + ".api.riotgames.com/lol/summoner/v4/summoners/by-name/" + summonerName + "?api_key=RGAPI-c87cc474-d6d0-493e-b33b-3ec7869b2201"
     response = requests.get(URL)
     return response.json()
 
 def requestLastMatch(region, accountID, APIKey):
    
-    URL = "https://" + region + ".api.riotgames.com/lol/match/v4/matchlists/by-account/" + accountID + "?api_key=" + APIKey
+    URL = "https://" + region + ".api.riotgames.com/lol/match/v4/matchlists/by-account/" + accountID + "?api_key=RGAPI-c87cc474-d6d0-493e-b33b-3ec7869b2201"
     response = requests.get(URL)
     return response.json()
     
 def requestRankData(region, accountID, APIKey):
-    URL =  "https://" + region + ".api.riotgames.com/lol/league/v4/entries/by-summoner/" + accountID + "?api_key=" + APIKey
+    URL =  "https://" + region + ".api.riotgames.com/lol/league/v4/entries/by-summoner/" + accountID + "?api_key=RGAPI-c87cc474-d6d0-493e-b33b-3ec7869b2201"
     response = requests.get(URL)
     return response.json()
 
