@@ -19,17 +19,17 @@ def realRegion(region):
         return False
 
 def requestSummonerData(region, summonerName):
-    URL = "https://" + region + ".api.riotgames.com/lol/summoner/v4/summoners/by-name/" + summonerName + "?api_key=RGAPI-6d790917-b242-4375-abd8-ca21150ece26"
+    URL = "https://" + region + ".api.riotgames.com/lol/summoner/v4/summoners/by-name/" + summonerName + "?api_key=RGAPI-e3c3b304-de42-4d3c-ac83-90bc3be549ce"
     response = requests.get(URL)
     return response.json()
         
 def requestLastMatch(region, accountID):
-    URL = "https://" + region + ".api.riotgames.com/lol/match/v4/matchlists/by-account/" + accountID + "?api_key=RGAPI-6d790917-b242-4375-abd8-ca21150ece26"
+    URL = "https://" + region + ".api.riotgames.com/lol/match/v4/matchlists/by-account/" + accountID + "?api_key=RGAPI-e3c3b304-de42-4d3c-ac83-90bc3be549ce"
     response = requests.get(URL)
     return response.json()
     
 def requestRankData(region, accountID):
-    URL =  "https://" + region + ".api.riotgames.com/lol/league/v4/entries/by-summoner/" + accountID + "?api_key=RGAPI-6d790917-b242-4375-abd8-ca21150ece26"
+    URL =  "https://" + region + ".api.riotgames.com/lol/league/v4/entries/by-summoner/" + accountID + "?api_key=RGAPI-e3c3b304-de42-4d3c-ac83-90bc3be549ce"
     response = requests.get(URL)
     return response.json()
 
@@ -61,7 +61,7 @@ def main():
                 print("Level: " + str(accountInfoJSON['summonerLevel']))
 
                 if(rankDataJSON == []):
-                    print("Rank: Not ranked")
+                    print("Rank: Unranked")
                 else:
                     tier = rankDataJSON[0]['tier']
                     rank = rankDataJSON[0]['rank']
@@ -69,9 +69,10 @@ def main():
                     win = rankDataJSON[0]['wins']
                     loss = rankDataJSON[0]['losses']
                     winrate = win/(win + loss)
-                    print("Rank: " + str(tier) + " " + str(rank) + "\nLP: " + str(lp) + "\nWin Rate: " + str(winrate))
+                    games = win + loss
+                    print("Rank: " + str(tier) + " " + str(rank) + "\nLP: " + str(lp) + "\nWin Rate: " + str(winrate) + "\nGames Played: " + str(games))
         else:
-            print("Region incorrect")
+            print("Region not found")
 
         answer = input("Would you like to quit the program (y/n)? ")
         while(x != 0):
