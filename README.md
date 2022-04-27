@@ -1,3 +1,3 @@
 # pyproj
 
-some python stuff
+Python League API
